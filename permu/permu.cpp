@@ -19,7 +19,6 @@
 #define print_array(k,n) iterate(n){ p(k[i]);}
 #define ps(s) printf("%s\n",s);
 #define repeat(n) for (int i = (0); i < n; i++)
-#define clear(v) memset((v), 0, sizeof (v))
 #define ALL(x) (x).begin(), (x).end()
 #define mp make_pair;
 #define pb push_back;
@@ -29,8 +28,8 @@ typedef unsigned long long int lld;
 typedef unsigned long int ld;
 using namespace std;
  
-inline lld scan2(){
-	lld n=0,s=1;
+inline int scan2(){
+	int n=0,s=1;
 	char p=getw();
 	if(p=='-') s=-1;
 	while((p<'0'||p>'9')&&p!=EOF&&p!='-') p=getw();
@@ -39,25 +38,38 @@ inline lld scan2(){
 	return n*s;
 }
  
- 
+bool myfunction(pair< int,int > i,pair < int,int > j) { return ( i.first <= j.first); }
+
+
+
 int main(){
-	lld i,z,n,j,k,t,h,ans = 0;
-	lld a,b,c,d,s;
+	int i,z,n,j,k,t,h,ans = 0;
+	int b,c,d,s;
 	get(t);
+
+	vector < pair< int, int > > a;
+	vector < pair< int, int > >::iterator it;;
 	
 	while(t--){
 		get(n);
 		get(k);
 		get(s);
+		a.clear();
 
-		iterate(n)
-			get(a);
+		iterate(n){
+			get(z);
+			a.push_back(make_pair(z,i+1));
+		}
 
-		for(i=1;i<=n;i++){
-			printf("%lld ",i);
+		sort(a.begin(),a.end(),myfunction);
+
+		for(it=a.begin();it!=a.end();it++){
+			// cout << (*it).first << "second = " << (*it).second <<endl ;
+			printf("%d ",(*it).second );
 		}
 		printf("\n");
 	}
+	
  
 	return 0;
 }
