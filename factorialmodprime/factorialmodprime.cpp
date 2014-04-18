@@ -89,7 +89,7 @@ lld solve(lld n, lld p){
 	*/
 
 
-	ans = power(val,p-2,p); // this works for modular inverese ( just a power function with  )
+	ans = power(val,p-1,p); // this works for modular inverese ( just a power function with  )
 
 	ans = -1 * ans + p;
 	ans  = ans%p;
